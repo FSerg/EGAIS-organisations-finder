@@ -1,7 +1,7 @@
 {
   "name": "egais_organisations",
   "version": "1.0.0",
-  "description": "Just small database of EGAIS organizations",
+  "description": "Small service for find EGAIS organizations in database",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
