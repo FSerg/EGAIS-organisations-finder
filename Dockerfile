@@ -11,6 +11,8 @@ ADD . /home/app
 RUN npm update -g npm
 RUN npm install
 
+RUN mkdir xmls
+
 # Tell Docker we are going to use this port
 EXPOSE 80
 
