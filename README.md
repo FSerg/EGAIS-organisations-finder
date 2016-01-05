@@ -7,9 +7,9 @@
 
 Сделал на коленке на NodeJS небольшой [конвертер](https://github.com/FSerg/EGAIS-organisations-finder/blob/master/converter.js), который загружет данные из XMLки в MongoDB, после этого с данными можно удобно работать. Обработать файлик получилось только библиотекой [xml-flow](https://github.com/matthewmatician/xml-flow) - она может читать данные порциями, другие библиотеки типа [Libxmljs](https://github.com/polotek/libxmljs) или [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js) пытаются парсить XMLку целиком и падают с ошибкой "out of memory".
 
-В папке [public](https://github.com/FSerg/EGAIS-organisations-finder/tree/master/public) маленькое SPA на Angular'е для поиска организаций по базе в MongoDB. Работает тут: egais.f-pix.ru
+В папке [public](https://github.com/FSerg/EGAIS-organisations-finder/tree/master/public) маленькое SPA на Angular'е для поиска организаций по базе в MongoDB. Работает тут: http://egais.f-pix.ru
 
-Можно к нему обращаться и как сервису простым GET-запросом: egais.f-pix.ru/org/4213005473 где последние цифры - это ИНН организации. Ответом возвращается JSON массив с данными объектов организации:
+Можно к нему обращаться и как сервису простым GET-запросом: http://egais.f-pix.ru/org/4213005473 где последние цифры - это ИНН организации. Ответом возвращается JSON массив с данными объектов организации:
 ```sh
 [{
     "_id": "010000000046",
