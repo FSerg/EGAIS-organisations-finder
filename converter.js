@@ -51,8 +51,9 @@ function ConvertXML() {
     });
 }
 
+// mongoose.connect(config.database, function(err) {
 mongoose.connect(config.database, {auth: { authdb: 'admin' }}, function(err) {
-    // console.log('Connection string: '+config.database); // for debugging only
+    console.log('Connection string: '+config.database); // for debugging only
     if (err) {
         console.log(err);
     } else {
