@@ -26,6 +26,7 @@
                         <input ng-model="innOrg" class="form-control" placeholder="Введите ИНН..." type="text">
                     </div>
                 </div>
+                <button class="btn btn-warning pull-right" ng-click="getStats()">Статистика</button>
                 <button class="btn btn-primary" type="submit">Найти</button>
             </form>
 
@@ -36,7 +37,7 @@
                         <b>{{ org.short_name }}</b>
                         <br /> ИНН: {{ org.inn }} КПП: {{ org.kpp }}
                         <br /> Статус: {{ org.status }}
-                        <br />
+                        <br /> <span class="update-info">(последнее обновление файла sprav_org.xml: {{org.updated_at | date:'yyyy-MM-dd'}})</span>
                     </div>
 
                     <div class="col-md-6 col-xs-12 secondary-info">
@@ -54,7 +55,15 @@
                 {{ errorMessage }}
             </p>
 
+            <div class="row organisation" ng-if="showStats">
+                <div class="col-md-12 col-xs-12 main-info bg-warning">
+                    <p>Всего записей: {{ total }}</p>
+                    <p ng-repeat="stat in statsArray"> Статус {{stat._id}}: {{ stat.count}} ({{ stat.percent | number:2 }}%)</p>
+                </div>
+            </div>
+
         </div>
+
         <p>
             Исходники и описание: <a href="https://github.com/FSerg/EGAIS-organisations-finder" target="_blank">https://github.com/FSerg/EGAIS-organisations-finder</a>
         </p>

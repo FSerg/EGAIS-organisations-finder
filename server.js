@@ -41,9 +41,36 @@ app.get('/org/:inn', function(req, res, next) {
             console.log('Error find Org by INN in database: ' + err);
             return next(err);
         }
-        res.send(org);
+        res.status(200).send(org);
     });
 });
+
+app.get('/stats', function(req, res, next) {
+
+    console.log('Сделан запрос статистики');
+
+    Item.count({}, function(err, total){
+        if (err) {
+            console.log('Error get total Items in database: ' + err);
+            res.status(404).send({result: 'error', answer: err});
+        }
+
+        Item.aggregate([
+            { $group: { _id: '$status', count: { $sum: 1 } } },
+            { $project: { count: "$count", percent: { $multiply: ["$count", 100 / total]} } },
+        ], function(err, result) {
+            if (err){
+                console.log('Error aggregate stats in database: ' + err);
+                res.status(404).send({result: 'error', answer: err});
+            }
+            console.log('Total: '+total);
+            console.log(result);
+            res.status(200).send({result: 'ok', answer: {total: total, stats: result}});
+        });
+    });
+
+});
+
 
 app.get('*', function(req, res) {
     res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
