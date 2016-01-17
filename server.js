@@ -23,12 +23,13 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 
-mongoose.connect(config.database, {auth: { authdb: 'admin' }}, function(err) {
+// mongoose.connect(config.database, {auth: { authdb: 'admin' }}, function(err) {
+mongoose.connect(config.database, function(err) {
     // console.log('Connection string: '+config.database); // for debugging only
     if (err) {
         console.log(err);
     } else {
-        console.log('Connected to DB!');
+        console.log('Connected to MongoDB!');
     }
 });
 

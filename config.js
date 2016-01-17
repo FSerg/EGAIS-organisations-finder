@@ -1,10 +1,13 @@
 
 // Production specific configuration
 // =================================
-var MONGODB_ADDR = process.env.MONGODB_PORT_27017_TCP_ADDR || 'localhost';
-var MONGODB_PORT = process.env.MONGODB_PORT_27017_TCP_PORT || 27017;
-var MONGODB_USER = process.env.MONGODB_ENV_MONGODB_USER || 'admin';
-var MONGODB_PASS = process.env.MONGODB_ENV_MONGODB_PASS;
+// var MONGODB_ADDR = process.env.MONGODB_PORT_27017_TCP_ADDR || process.env.MONGODB_ADDRESS || 'localhost';
+var MONGODB_ADDR = process.env.MONGODB_ENV_TUTUM_NODE_FQDN || process.env.MONGODB_ADDRESS || 'localhost';
+// something was broken in Tutum Weave sevice and doesn't work internal linked IPs
+
+var MONGODB_PORT = process.env.MONGODB_PORT || 27017;
+var MONGODB_USER = process.env.MONGODB_USER;
+var MONGODB_PASS = process.env.MONGODB_PASS;
 
 var MONGO_CONNECTION;
 if (process.env.NODE_ENV === 'production') {
